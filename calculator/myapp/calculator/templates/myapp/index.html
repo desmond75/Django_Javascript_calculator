@@ -1,0 +1,693 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">	
+	<link rel="stylesheet" type="text/css" href="{% static 'myapp/css/bootstrap.min.css' %}">
+	<title>calculator</title>
+</head>
+<style type="text/css">
+.border{
+	margin-top:18px;
+	height:40px;
+}
+.col-md-6{
+	margin-top: 30px;
+}
+.title{
+	padding-top:3px;
+}
+.b{
+	margin:3.4px;
+	width:66px;
+}
+
+.p{
+	height:197px;
+}
+</style>
+<body>
+	<div class="container">	
+		<div class="row">
+			<div class="col-md-2"></div>
+			<div class="col-md-6 card">
+				<span class="title">CASHIO</span>
+				<h4 class="screen border border rounded" id="screen">0</h4>
+				<p class="p border border">
+					<button class="b btn-info" id="d" onclick="change_color()">color</button>
+					<button class="b" onclick="sqrt()">sqrt</button>
+					<button class="b" onclick="openbracket()">(</button>
+					<button class="b" onclick="closebracket()">)</button>
+					<button class="b" onclick="percent()">%</button>
+					<button class="b" onclick="ce()">CE</button>
+					<button class="b" onclick="delete_()"><b><--</b></button>
+					<button class="b">Inv</button>
+					<button class="b" onclick="sin()">sin</button>
+					<button class="b">In</button>
+					<button class="b" onclick="seven()">7</button>
+					<button class="b" onclick="eight()">8</button>
+					<button class="b" onclick="nine()">9</button>
+					<button class="b" onclick="division()">/</button>
+					<button class="b" onclick="pie()">pie</button>
+					<button class="b" onclick="cos()">cos</button>
+					<button class="b" onclick="log()">log</button>
+					<button class="b" onclick="four()">4</button>
+					<button class="b" onclick="five()">5</button>
+					<button class="b" onclick="six()">6</button>
+					<button class="b" onclick="multiplication()">x</button>
+					<button class="b" onclick="euler()">e</button>
+					<button class="b" onclick="tan()">tan</button>
+					<button class="b">x!</button>
+					<button class="b" id="one" onclick="one()">1</button>
+					<button class="b" onclick="two()">2</button>
+					<button class="b" onclick="three()">3</button>
+					<button class="b" onclick="minus()">-</button>
+					<button class="b" onclick="ans()">Ans</button>
+					<button class="b">EXP</button>
+					<button class="b">x<sup>y</sup></button>
+					<button class="b" onclick="zero()">0</button>
+					<button class="b" onclick="dot()">.</button>
+					<button class="b btn-success" onclick="calculate()">=</button>
+					<button class="b" onclick="add()">+</button>
+				</p>
+			</div>
+			<div class="col-md-3"></div>
+		</div>
+	</div>
+	<div class="container">
+
+		<script>
+			function one(){
+				var x = document.getElementById('screen')//Gets the value of html content
+				if (x.innerHTML == '0'){
+					x.innerHTML = 1
+					buttonClick(1)
+				}
+				else{
+					var x = document.getElementById('screen').innerHTML += 1
+					buttonClick(1)
+
+				}
+				//document.write(typeof x)
+				//var num = x.toString()
+				if (x.length > 30){
+					//var screen = document.getElementById('screen').innerHTML
+					var x = document.getElementById('screen').innerHTML = 'ERROR' 
+					//document.write('Out of memory', num.length)
+				}
+			}
+			function two(){
+				var x = document.getElementById('screen')//Gets the value of html content
+				if (x.innerHTML == '0'){
+					x.innerHTML = 2
+					buttonClick(2)
+				}
+				else{
+					var x = document.getElementById('screen').innerHTML += 2
+					buttonClick(2)
+
+				}
+				if (x.length > 30){
+					var x = document.getElementById('screen').innerHTML = 'ERROR' 
+					//document.write('Out of memory', num.length)
+				}
+			}
+			function three(){
+				var x = document.getElementById('screen')//Gets the value of html content
+				if (x.innerHTML == '0'){
+					x.innerHTML = 3
+					buttonClick(3)
+				}
+				else{
+					var x = document.getElementById('screen').innerHTML += 3
+					buttonClick(3)
+
+				}
+				if (x.length > 30){
+					var x = document.getElementById('screen').innerHTML = 'ERROR' 
+					//document.write('Out of memory', num.length)
+				}
+			}
+			function four(){
+				var x = document.getElementById('screen')//Gets the value of html content
+				if (x.innerHTML == '0'){
+					x.innerHTML = 4
+					buttonClick(4)
+
+				}
+				else{
+					var x = document.getElementById('screen').innerHTML += 4
+					buttonClick(4)
+
+				}
+				//var x = document.getElementById('screen').innerHTML += 4
+				if (x.length > 30){
+					var x = document.getElementById('screen').innerHTML = 'ERROR' 
+					//document.write('Out of memory', num.length)
+				}
+			}
+			function five(){
+				var x = document.getElementById('screen')//Gets the value of html content
+				if (x.innerHTML == '0'){
+					x.innerHTML = 5
+					buttonClick(5)
+
+				}
+				else{
+					var x = document.getElementById('screen').innerHTML += 5
+					buttonClick(5)
+
+				}
+				//var x = document.getElementById('screen').innerHTML += 5
+				if (x.length > 30){
+					var x = document.getElementById('screen').innerHTML = 'ERROR' 
+					//document.write('Out of memory', num.length)
+				}
+			}
+			function six(){
+				var x = document.getElementById('screen')//Gets the value of html content
+				if (x.innerHTML == '0'){
+					x.innerHTML = 6
+					buttonClick(6)
+
+				}
+				else{
+					var x = document.getElementById('screen').innerHTML += 6
+					buttonClick(6)
+
+				}
+				//var x = document.getElementById('screen').innerHTML += 6
+				if (x.length > 30){
+					var x = document.getElementById('screen').innerHTML = 'ERROR' 
+					//document.write('Out of memory', num.length)
+				}
+			}
+			function seven(){
+				var x = document.getElementById('screen')//Gets the value of html content
+				if (x.innerHTML == '0'){
+					x.innerHTML = 7
+					buttonClick(7)
+
+				}
+				else{
+					var x = document.getElementById('screen').innerHTML += 7
+					buttonClick(7)
+
+				}
+				//var x = document.getElementById('screen').innerHTML += 7
+				if (x.length > 30){
+					var x = document.getElementById('screen').innerHTML = 'ERROR' 
+					//document.write('Out of memory', num.length)
+				}
+			}
+			function eight(){
+				var x = document.getElementById('screen')//Gets the value of html content
+				if (x.innerHTML == '0'){
+					x.innerHTML = 8
+					buttonClick(8)
+
+				}
+				else{
+					var x = document.getElementById('screen').innerHTML += 8
+					buttonClick(8)
+
+				}
+				//var x = document.getElementById('screen').innerHTML += 8
+				if (x.length > 30){
+					var x = document.getElementById('screen').innerHTML = 'ERROR' 
+					//document.write('Out of memory', num.length)
+				}
+			}
+			function nine(){
+				var x = document.getElementById('screen')//Gets the value of html content
+				if (x.innerHTML == '0'){
+					x.innerHTML = 9
+					buttonClick(9)
+
+				}
+				else{
+					var x = document.getElementById('screen').innerHTML += 9
+					buttonClick(9)
+
+				}
+				//var x = document.getElementById('screen').innerHTML += 9
+				if (x.length > 30){
+					var x = document.getElementById('screen').innerHTML = 'ERROR' 
+					//document.write('Out of memory', num.length)
+				}
+			}
+			function multiplication(){
+				var x = document.getElementById('screen')//Gets the value of html content
+				if (x.innerHTML == '0'){
+					x.innerHTML = 'x'
+					buttonClick('x')
+
+				}
+				else{
+					var x = document.getElementById('screen').innerHTML += ' x '
+					buttonClick('x')
+				}
+				//var x = document.getElementById('screen').innerHTML += ' x '
+				if (x.length > 30){
+					var x = document.getElementById('screen').innerHTML = 'ERROR' 
+					//document.write('Out of memory', num.length)
+				}
+			}
+			function minus(){
+				var x = document.getElementById('screen')//Gets the value of html content
+				if (x.innerHTML == '0'){
+					x.innerHTML = '-'
+					buttonClick('-')
+
+				}
+				else{
+					var x = document.getElementById('screen').innerHTML += ' - '
+					buttonClick('-')
+				}
+				//var x = document.getElementById('screen').innerHTML += " - "
+				if (x.length > 30){
+					var x = document.getElementById('screen').innerHTML = 'ERROR' 
+					//document.write('Out of memory', num.length)
+				}
+			}
+			function add(){
+				var x = document.getElementById('screen')//Gets the value of html content
+				if (x.innerHTML == '0'){
+					x.innerHTML = '+'
+					buttonClick('+')
+
+				}
+				else{
+					var x = document.getElementById('screen').innerHTML += ' + '
+					buttonClick('+')
+				}
+				//var x = document.getElementById('screen').innerHTML += ' + '
+				if (x.length > 30){
+					var x = document.getElementById('screen').innerHTML = 'ERROR' 
+					//document.write('Out of memory', num.length)
+				}
+			}
+			function division(){
+				var x = document.getElementById('screen')//Gets the value of html content
+				if (x.innerHTML == '0'){
+					x.innerHTML = '/'
+					buttonClick('/')
+
+				}
+				else{
+					var x = document.getElementById('screen').innerHTML += ' / '
+					buttonClick('/')
+				}
+				//var x = document.getElementById('screen').innerHTML += ' / '
+				if (x.length > 30){
+					var x = document.getElementById('screen').innerHTML = 'ERROR' 
+					//document.write('Out of memory', num.length)
+				}
+			}
+			function zero(){
+				var x = document.getElementById('screen')//Gets the value of html content
+				if (x.innerHTML == '0'){
+					x.innerHTML = 0
+					buttonClick(0)
+
+				}
+				else{
+					var x = document.getElementById('screen').innerHTML += 0
+					buttonClick(0)
+				}
+
+				//var x = document.getElementById('screen')//Gets the value of html content
+				//var x = document.getElementById('screen').innerHTML += 0
+				if (x.length > 30){
+					var x = document.getElementById('screen').innerHTML = 'ERROR' 
+					//document.write('Out of memory', num.length)
+				}
+			}
+			function percent(){
+				var x = document.getElementById('screen')//Gets the value of html content
+				if (x.innerHTML == '0'){
+					result = input_number(buttonClicked) / 100
+					x.innerHTML = result
+					reset(result)
+					//buttonClick('%')
+
+				}
+				else{
+					result = input_number(buttonClicked) / 100
+					reset(result)
+					var x = document.getElementById('screen').innerHTML = result
+					//buttonClick('%')
+				}
+				//var x = document.getElementById('screen').innerHTML += " % " 
+				if (x.length > 30){
+					var x = document.getElementById('screen').innerHTML = 'ERROR' 
+					//document.write('Out of memory', num.length)
+				}
+			}
+			function tan(){
+				var x = document.getElementById('screen')//Gets the value of html content
+				if (x.innerHTML == '0'){
+					result = Math.tan(input_number(buttonClicked))
+					x.innerHTML = result
+					reset(result)
+				}
+				else{
+					result = Math.tan(input_number(buttonClicked))
+					var x = document.getElementById('screen').innerHTML = result
+					reset(result)
+					//buttonClick('tan(');
+				}
+				if (x.length > 30){
+					var x = document.getElementById('screen').innerHTML = 'ERROR' ;
+				}
+			}
+			function cos(){
+				var x = document.getElementById('screen')//Gets the value of html content
+				if (x.innerHTML == '0'){
+					result = Math.cos(input_number(buttonClicked))
+					x.innerHTML = result
+					reset(result)
+					//buttonClick('cos(')
+				}
+				else{
+					result = Math.cos(input_number(buttonClicked))
+					var x = document.getElementById('screen').innerHTML = result
+					reset(result)
+				}
+				if (x.length > 30){
+					var x = document.getElementById('screen').innerHTML = 'ERROR' 
+					//document.write('Out of memory', num.length)
+				}
+			}
+
+			function dot(){
+				var x = document.getElementById('screen')//Gets the value of html content
+				if (x.innerHTML == '0'){
+					x.innerHTML = '.'
+					buttonClick('.')
+
+				}
+				else{
+					var x = document.getElementById('screen').innerHTML += '.'
+					buttonClick('.')
+				}
+				//var x = document.getElementById('screen').innerHTML += "."
+				if (x.length > 30){
+					var x = document.getElementById('screen').innerHTML = 'ERROR' 
+					//document.write('Out of memory', num.length)
+				}
+			}
+
+			function log(){
+				var x = document.getElementById('screen')//Gets the value of html content
+				if (x.innerHTML == '0'){
+					result = Math.log(input_number(buttonClicked))
+					x.innerHTML = result
+					reset(result)
+					//buttonClick('log(')
+				}
+				else{
+					var number = buttonClicked.join("")
+					number = Number(number)
+					result = Math.log(input_number(buttonClicked))
+					var x = document.getElementById('screen').innerHTML = result
+					reset(result)
+				    //buttonClick('log(')
+
+				}
+				//var x = document.getElementById('screen').innerHTML += "log("
+				if (x.length > 30){
+					var x = document.getElementById('screen').innerHTML = 'ERROR' 
+					//document.write('Out of memory', num.length)
+				}
+			}
+
+			function sin(){
+				var x = document.getElementById('screen')//Gets the value of html content
+				if (x.innerHTML == '0'){
+					result = Math.sin(input_number(buttonClicked))
+					x.innerHTML = result
+					reset(result)
+
+					//buttonClick('sin(')
+				}
+				else{
+					result = Math.sin(input_number(buttonClicked))
+					document.getElementById('screen').innerHTML = result
+					reset(result)
+				}
+				if (x.length > 30){
+					var x = document.getElementById('screen').innerHTML = 'ERROR' 
+				}
+			}
+
+			function euler(){
+				var x = document.getElementById('screen')//Gets the value of html content
+				if (x.innerHTML == '0'){
+					result = Math.E
+					x.innerHTML = result
+					reset(result)
+					//buttonClick('log(')
+				}
+				else{
+					var number = buttonClicked.join("")
+					number = Number(number)
+					result = Math.E
+					var x = document.getElementById('screen').innerHTML = result
+					reset(result)
+				    //buttonClick('log(')
+
+				}
+				//var x = document.getElementById('screen').innerHTML += "log("
+				if (x.length > 30){
+					var x = document.getElementById('screen').innerHTML = 'ERROR' 
+					//document.write('Out of memory', num.length)
+				}
+			}
+
+			function ans(){
+				var x = document.getElementById('screen')//Gets the value of html content
+				if (x.innerHTML == '0'){
+					x.innerHTML = "Ans"
+					var number = buttonClicked[0]
+					buttonClicked.length = 0//creates a new array
+					buttonClick(number) 
+				}
+				else{
+					var x = document.getElementById('screen').innerHTML += "Ans"
+					var number = buttonClicked[0]
+					buttonClicked.length = 0
+					buttonClick(number)
+				    //buttonClicked.push('Ans')
+				}
+				//var x = document.getElementById('screen').innerHTML += "Ans";
+				if (x.length > 30){
+					var x = document.getElementById('screen').innerHTML = 'ERROR' 
+					//document.write('Out of memory', num.length)
+				}
+			}
+
+
+			function openbracket(){
+				var x = document.getElementById('screen')//Gets the value of html content
+				if (x.innerHTML == '0'){
+					x.innerHTML = "("
+				}
+				else{
+					var x = document.getElementById('screen').innerHTML += "("
+				}
+				if (x.length > 30){
+					var x = document.getElementById('screen').innerHTML = 'ERROR' 
+				}
+			}//closiing function openbracket
+
+			function closebracket(){
+				var x = document.getElementById('screen')//Gets the value of html content
+				if (x.innerHTML == '0'){
+					x.innerHTML = ")"
+				}
+				else{
+					var x = document.getElementById('screen').innerHTML += ")"
+				}
+				//var x = document.getElementById('screen').innerHTML += ")"
+				if (x.length > 30){
+					var x = document.getElementById('screen').innerHTML = 'ERROR' 
+				}
+			}//closing function closebracket
+
+			function sqrt(){
+				var x = document.getElementById('screen')//Gets the value of html content
+				if (x.innerHTML == '0'){
+					var number = buttonClicked.join("")
+					number = Number(number)
+					result = Math.sqrt(number)
+					x.innerHTML = result //"sqrt(";
+					reset(result)
+					//buttonClick('sqrt(');
+				}
+				else{
+					var number = buttonClicked.join("")
+					number = Number(number)
+					result =  Math.sqrt(number)
+					document.getElementById('screen').innerHTML = result //+= "sqrt(";
+					reset(result)
+					//buttonClick('sqrt(');
+				}
+				//var x = document.getElementById('screen').innerHTML += ")"
+				if (x.length > 30){
+					var x = document.getElementById('screen').innerHTML = 'ERROR';
+				}
+			} //closing function closebracket
+
+			function exp(){
+				var x = document.getElementById('screen').innerHTML += "E";
+			}
+
+			function pie(){
+				var x = document.getElementById('screen')//Gets the value of html content
+				if (x.innerHTML == '0'){
+					result = Math.PI;
+					x.innerHTML = result
+					reset(result)
+				}
+				else{
+					result = Math.PI;
+					var x = document.getElementById('screen').innerHTML = result;
+					reset(result)
+				}//Closing else
+			}//closing function
+
+
+			function ce(){
+				var x = document.getElementById('screen').innerHTML = 0 //Gets the value of html content
+				buttonClicked.length = 0
+				sign.length = 0
+			}//closing function
+			
+			function delete_(){
+				buttonClicked.pop();//remove numbers from list as they are 
+				sign.pop();
+				//remove on the screen
+				var content = document.getElementById('screen').innerHTML;
+				var len = content.length ;
+				if (len == 1){
+					var content = document.getElementById('screen').innerHTML = 0;
+				}
+				else{
+					var newScreenContent = content.slice(0,len - 1);
+					document.getElementById('screen').innerHTML = newScreenContent;
+				}
+				
+			 } //closing function ce
+				
+			var color_number = 0;
+			function change_color(){
+				var button = document.getElementsByTagName('button');
+				var backgroundgColor = document.getElementsByClassName('col-md-6');
+				//topBgColor[0].style.background = colors[color_num]
+				var colors = ['#ff7474','#000000','#72ff73','#7ff473','#000000','#ff7474', '#72ffff', ''];
+				backgroundgColor[0].style.background = colors[color_number];
+				color_number += 1;
+				if (color_number > 8){
+					color_number = 0; 
+				}
+				for (i = 0; i < button.length; i++){
+					button[i].style.color = colors[color_number];
+					//topBgColor[i].style.background = colors[color_num]
+				}
+
+			}
+
+			function input_number(number){
+				//recieve an array of numbers and concatenate the numbers
+				//then do type conversion to the numbers 
+				var user_number = Number(number.join(""));
+				return user_number;
+
+			}
+
+			function reset(result) {
+				buttonClicked.length = 0 // clear buttonClicked arrays
+				sign.length = 0 // clear sign array
+				buttonClicked.push(result)
+			}
+
+			var buttonClicked = [];
+			var sign = [];
+			//var answer = [];
+
+			function buttonClick(key){
+				if (typeof key == 'number'){
+					buttonClicked.push(key)
+				}//
+				else if (key == '.' ){
+					buttonClicked.push(key)
+				}//
+				else{
+					sign.push(key)
+					if (buttonClicked.length > 0){
+						buttonClicked.push('split') //add split to buttonClicked only when it has a number 
+					}//
+				}//closing else
+			}//closing function buttonClick
+
+			function calculate(){
+				if (buttonClicked.length > 0){
+					var endIndexOfFirstNumber = buttonClicked.indexOf('split');
+					var firstNumber = buttonClicked.slice(0, endIndexOfFirstNumber);
+					var lastNumber = buttonClicked.slice(endIndexOfFirstNumber+1);
+					firstNumber = Number(firstNumber.join(''));
+					lastNumber = Number(lastNumber.join(''));
+					//if (sign.length > 0 ){ //chEck thE kind of sign and makE surE its in +-/*
+					if (sign[0] == '+'){
+						var result = firstNumber + lastNumber;
+						document.getElementById('screen').innerHTML = result;
+						//clear button and push answer to it it 
+						reset(result);
+						
+					}
+					else if (sign[0] == 'x'){
+						var result = firstNumber * lastNumber;
+						document.getElementById('screen').innerHTML = result;
+						reset(result);
+					}
+					else if (sign[0] == '-'){
+						var result = firstNumber - lastNumber;
+						document.getElementById('screen').innerHTML = result;
+						reset(result);
+					}
+					else if (sign[0] = '/'){
+						var result = firstNumber / lastNumber;
+						document.getElementById('screen').innerHTML = result;
+						reset(result);
+					}
+					//}
+			        else{
+			        	document.getElementById('screen').innerHTML = document.getElementById('screen').innerHTML
+			        	//sets screen value to the same value if user hits equalto button without inputing a second value
+			        }
+			        //or we just check sign if sign is cos ,log, ot tan and do calculations directly
+				}
+				else{
+					document.getElementById('screen').innerHTML = 0
+				}
+				
+			}//closing function calculate
+
+		</script>
+	</div>
+	<div class="container-fluid" style="margin-top:200px">
+		<div class="row">
+			<div class="col-md-6">
+			<p>
+				Developer: <b>Fon Desmond Ade</b><br>
+			    Email: <b>adedesmon6@gmail.com</b><br>
+				Nationality: <b>Cameroonian</b>
+			</p>
+			</div>
+
+		</div>
+	</div>
+</body>
+</html>
